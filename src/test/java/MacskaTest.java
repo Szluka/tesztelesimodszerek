@@ -4,28 +4,20 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MacskaTest {
 
     @Test
-    public void testMacskaNyavog() {
+    public void testMacskaConstructorWithNevAndBaratsagos() {
         Macska macska = new Macska("Cirmi", true);
-        macska.nyavog(); // Just check if there are no exceptions
+        assertEquals("Cirmi", macska.getNev());
+        assertEquals(6.0, macska.getSuly(), 0.0);
+        assertTrue(macska.isBaratsagos());
+        assertEquals(0, macska.getBolhakSzama());
     }
 
     @Test
-    public void testMacskaKoborol() {
-        Macska macska = new Macska("Bogyó", true);
-        macska.koborol(30);
-        assertEquals(4.5, macska.getSuly());
-        assertTrue(macska.getBolhakSzama() > 0);
-
-        macska.koborol(15);
-        assertEquals(3.75, macska.getSuly());
-        assertTrue(macska.getBolhakSzama() > 0);
-    }
-
-    @Test
-    public void testMacskaBolhatlanit() {
-        Macska macska = new Macska("Dundi", false);
-        macska.koborol(40);
-        macska.bolhatlanit();
+    public void testMacskaConstructorWithNev() {
+        Macska macska = new Macska("Cirmi");
+        assertEquals("Cirmi", macska.getNev());
+        assertEquals(10.0, macska.getSuly(), 0.0);
+        assertTrue(macska.isBaratsagos());
         assertEquals(0, macska.getBolhakSzama());
     }
 
@@ -33,23 +25,59 @@ public class MacskaTest {
     public void testMacskaDefaultConstructor() {
         Macska macska = new Macska();
         assertEquals("Kóbor cica", macska.getNev());
+        assertEquals(6.0, macska.getSuly(), 0.0);
         assertFalse(macska.isBaratsagos());
-        assertEquals(6, macska.getSuly());
         assertEquals(0, macska.getBolhakSzama());
     }
 
     @Test
-    public void testMacskaParameterizedConstructors() {
-        Macska macska1 = new Macska("Mázli");
-        assertEquals("Mázli", macska1.getNev());
-        assertTrue(macska1.isBaratsagos());
-        assertEquals(10, macska1.getSuly());
-        assertEquals(0, macska1.getBolhakSzama());
+    public void testNyavog() {
+        Macska macska = new Macska("Cirmi", true);
+        macska.nyavog();
+        // Not much to assert in this method, just check if it doesn't throw any exceptions
+    }
 
-        Macska macska2 = new Macska("Morzsi", false);
-        assertEquals("Morzsi", macska2.getNev());
-        assertFalse(macska2.isBaratsagos());
-        assertEquals(6, macska2.getSuly());
-        assertEquals(0, macska2.getBolhakSzama());
+    @Test
+    public void testKoborol() {
+        Macska macska = new Macska("Cirmi", true);
+        macska.koborol(5.0);
+        assertEquals(5.75, macska.getSuly(), 0.01);
+        assertEquals(1, macska.getBolhakSzama());
+    }
+
+    @Test
+    public void testBolhatlanit() {
+        Macska macska = new Macska("Cirmi", true);
+        macska.koborol(5.0);
+        macska.bolhatlanit();
+        assertEquals(0, macska.getBolhakSzama());
+    }
+
+    @Test
+    public void testSetAndGetSuly() {
+        Macska macska = new Macska("Cirmi", true);
+        macska.setSuly(7.5);
+        assertEquals(7.5, macska.getSuly(), 0.0);
+    }
+
+    @Test
+    public void testSetAndGetNev() {
+        Macska macska = new Macska("Cirmi", true);
+        macska.setNev("Dundi");
+        assertEquals("Dundi", macska.getNev());
+    }
+
+    @Test
+    public void testIsBaratsagos() {
+        Macska macska = new Macska("Cirmi", true);
+        assertTrue(macska.isBaratsagos());
+    }
+
+    @Test
+    public void testGetBolhakSzama() {
+        Macska macska = new Macska("Cirmi", true);
+        macska.koborol(5.0);
+        assertEquals(1, macska.getBolhakSzama());
     }
 }
+
