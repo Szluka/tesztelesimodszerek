@@ -1,7 +1,7 @@
 public class Torta {
     private int osszesSzelet;
     private int jelenlegiSzelet;
-    private int retegekSzama;
+    private final int retegekSzama;
     private String iz;
 
     public Torta(int szelet, int retegekSzama, String iz) {
@@ -54,11 +54,8 @@ public class Torta {
         int megvettSutik = 0;
         for (double ar = 0.1; penzunk >= ar && megvettSutik < jelenlegiSzelet; ar += 0.1) {
             penzunk -= ar;
-            System.out.println(penzunk);
-            System.out.println(ar);
             ++megvettSutik;
             tortaszeletElfogyasztasa();
-            System.out.println(jelenlegiSzelet);
         }
         return penzunk;
     }

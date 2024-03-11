@@ -10,6 +10,7 @@ public class Kamra {
 
     public Kamra(Macska macska, Torta torta, int polcokSzama) {
         this.teruletNegyzetmeterben = 5;
+        if (polcokSzama < 0) polcokSzama = 0;
         this.polcokSzama = polcokSzama;
         this.macska = macska;
         this.torta = torta;
@@ -28,6 +29,7 @@ public class Kamra {
 
     public void bovites(int negyzetmeter) {
         teruletNegyzetmeterben += negyzetmeter;
+        this.hasznosTerulet = getHasznosTerulet();
     }
 
     public void informacioKiiras() {
@@ -59,11 +61,16 @@ public class Kamra {
         return getTeruletNegyzetmeterben() - this.getPolcokSzama()*0.5;
     }
 
+    public boolean befer(double dologNegyzetmeterben) {
+        return dologNegyzetmeterben <= hasznosTerulet;
+    }
+
     public int getPolcokSzama() {
         return polcokSzama;
     }
 
     public void setPolcokSzama(int polcokSzama) {
+        if (polcokSzama < 0) polcokSzama = 0;
         this.polcokSzama = polcokSzama;
     }
 

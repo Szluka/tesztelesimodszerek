@@ -46,4 +46,8 @@ public class KamraTest {
 
         assertEquals(8, kamra.getTeruletNegyzetmeterben());
     }
+
+    //TODO public void testBefer() {}
+    // Hozzunk létre egy tetszőleges Kamrát, majd teszteljük a befer() függvényt.
+    // Ugyanebben a Kamrában hajtsunk végre bovites()-t, növeljük a polcok számát, és újra teszteljük a befer() függvényt.
 }

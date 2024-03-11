@@ -79,5 +79,7 @@ public class MacskaTest {
         macska.koborol(5.0);
         assertEquals(1, macska.getBolhakSzama());
     }
+
+    //TODO public void setSimogatasokSzama() {}
 }
 
