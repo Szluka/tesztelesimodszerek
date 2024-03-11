@@ -41,6 +41,11 @@ public class Macska {
         bolhakSzama += (tav / 20) + 1;
     }
 
+    public void eszik(int etelMennyiseg) {
+        System.out.println(nev + " eszik " + etelMennyiseg + " egység ételt.");
+        suly += etelMennyiseg / 2;
+    }
+
     public void bolhatlanit() {
         this.bolhakSzama = 0;
     }
@@ -67,5 +72,13 @@ public class Macska {
 
     public int getBolhakSzama() {
         return bolhakSzama;
+    }
+
+    public int getSimogatasokSzama() {
+        return simogatasokSzama;
+    }
+
+    public void setSimogatasokSzama(int simogatasokSzama) {
+        this.simogatasokSzama = simogatasokSzama;
     }
 }
